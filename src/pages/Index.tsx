@@ -1,13 +1,35 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { Layout } from "@/components/layout/Layout";
+import { HeroSection } from "@/components/home/HeroSection";
+import { SevaCards } from "@/components/home/SevaCards";
+import { AboutSection } from "@/components/home/AboutSection";
+import { GauSevaSection } from "@/components/home/GauSevaSection";
+import { EventsSection } from "@/components/home/EventsSection";
+import { ImpactBanner } from "@/components/home/ImpactBanner";
+import { DonationProcess } from "@/components/home/DonationProcess";
+import { StatsSection } from "@/components/home/StatsSection";
+import { NewsSection } from "@/components/home/NewsSection";
+import { TestimonialsSection } from "@/components/home/TestimonialsSection";
+import { VolunteerSection } from "@/components/home/VolunteerSection";
+import { CTABanner } from "@/components/home/CTABanner";
+import { TrusteesSection } from "@/components/home/TrusteesSection";
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
-    </div>
+    <Layout>
+      <HeroSection />
+      <SevaCards />
+      <AboutSection />
+      <GauSevaSection />
+      <EventsSection />
+      <ImpactBanner />
+      <DonationProcess />
+      <StatsSection />
+      <NewsSection />
+      <TestimonialsSection />
+      <VolunteerSection />
+      <CTABanner />
+      <TrusteesSection />
+    </Layout>
   );
 };
 
