@@ -52,44 +52,28 @@ export function Header() {
   }, [location.pathname]);
 
   return (
-    <header
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        isScrolled
-          ? "bg-card/95 backdrop-blur-md shadow-soft py-2"
-          : "bg-transparent py-4"
-      )}
-    >
-      {/* Top bar */}
-      <div className="hidden lg:block border-b border-border/50">
-        <div className="container flex items-center justify-between py-2 text-sm">
-          <p className="text-muted-foreground">
-            🙏 Serving Humanity with Compassion, Faith & Purpose
-          </p>
-          <div className="flex items-center gap-4">
-            <a href="tel:+919876543210" className="text-muted-foreground hover:text-primary transition-colors">
-              📞 +91 98765 43210
-            </a>
-            <a href="mailto:info@gokulam.org" className="text-muted-foreground hover:text-primary transition-colors">
-              ✉️ info@gokulam.org
-            </a>
-          </div>
-        </div>
-      </div>
+    <header className="fixed top-0 left-0 right-0 z-50 px-4 md:px-8 lg:px-12 pt-4">
+      <div
+        className={cn(
+          "max-w-7xl mx-auto rounded-full transition-all duration-500",
+          isScrolled
+            ? "bg-card/95 backdrop-blur-md shadow-lg"
+            : "bg-card/80 backdrop-blur-sm shadow-soft"
+        )}
+      >
 
-      {/* Main navigation */}
-      <div className="container">
-        <nav className="flex items-center justify-between py-2">
+        {/* Main navigation */}
+        <nav className="flex items-center justify-between px-4 md:px-6 py-3">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-full gradient-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-display text-xl font-bold">G</span>
+          <Link to="/" className="flex items-center gap-2 md:gap-3">
+            <div className="w-10 h-10 md:w-11 md:h-11 rounded-full gradient-primary flex items-center justify-center shadow-md">
+              <span className="text-primary-foreground font-display text-lg md:text-xl font-bold">G</span>
             </div>
             <div className="hidden sm:block">
-              <h1 className="font-display text-xl font-bold text-primary leading-tight">
+              <h1 className="font-display text-lg md:text-xl font-bold text-primary leading-tight">
                 Gokulam
               </h1>
-              <p className="text-xs text-muted-foreground">Dharmik Charitable Trust</p>
+              <p className="text-[10px] md:text-xs text-muted-foreground -mt-0.5">Dharmik Charitable Trust</p>
             </div>
           </Link>
 
@@ -178,13 +162,13 @@ export function Header() {
       {/* Mobile Menu */}
       <div
         className={cn(
-          "lg:hidden absolute top-full left-0 right-0 bg-card border-t border-border shadow-lg transition-all duration-300",
+          "lg:hidden mt-2 rounded-2xl bg-card border border-border shadow-lg transition-all duration-300 overflow-hidden",
           isMobileMenuOpen
-            ? "opacity-100 translate-y-0"
-            : "opacity-0 -translate-y-4 pointer-events-none"
+            ? "opacity-100 max-h-[80vh] translate-y-0"
+            : "opacity-0 max-h-0 -translate-y-2 pointer-events-none"
         )}
       >
-        <div className="container py-4">
+        <div className="p-4">
           <div className="flex flex-col gap-1">
             {navItems.map((item) => (
               <div key={item.label}>
