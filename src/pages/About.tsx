@@ -1,6 +1,6 @@
 import { Layout } from "@/components/layout/Layout";
 import { Link } from "react-router-dom";
-import { ArrowRight, Target, Eye, History, Users, Heart, Shield, Award } from "lucide-react";
+import { ArrowRight, Target, Eye, History, Users, Heart, Shield, Award, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const objectives = [
@@ -145,9 +145,11 @@ const About = () => {
           </h2>
           <div className="flex flex-wrap justify-center gap-4">
             <Link to="/donations">
-              <Button variant="coral" size="lg" className="gap-2">
-                <Heart className="w-4 h-4" />
+              <Button variant="coral" size="lg" className="gap-2 pr-3">
                 Donate Now
+                <span className="w-6 h-6 bg-white rounded-full flex items-center justify-center">
+                  <ArrowUpRight className="w-4 h-4 text-coral" />
+                </span>
               </Button>
             </Link>
             <Link to="/volunteer">
