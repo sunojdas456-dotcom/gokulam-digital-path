@@ -1,6 +1,6 @@
 import { Layout } from "@/components/layout/Layout";
 import { useState } from "react";
-import { Heart, ArrowRight, Check, ShoppingCart, Plus, Minus, Gift } from "lucide-react";
+import { ArrowUpRight, Check, ShoppingCart, Plus, Minus, Gift } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -361,13 +361,14 @@ const Donations = () => {
               <Button
                 variant="coral"
                 size="xl"
-                className="w-full gap-3"
+                className="w-full gap-3 pr-4"
                 onClick={handleDonate}
                 disabled={cart.length === 0}
               >
-                <Heart className="w-5 h-5" />
                 Donate ₹{totalAmount.toLocaleString()}
-                <ArrowRight className="w-5 h-5" />
+                <span className="w-7 h-7 bg-white rounded-full flex items-center justify-center">
+                  <ArrowUpRight className="w-4 h-4 text-coral" />
+                </span>
               </Button>
 
               <p className="text-xs text-muted-foreground text-center">

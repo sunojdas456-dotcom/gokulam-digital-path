@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Heart, Play } from "lucide-react";
+import { ArrowUpRight, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-krishna.jpg";
 
@@ -47,10 +47,11 @@ export function HeroSection() {
           {/* CTA Buttons */}
           <div className="flex flex-wrap gap-4 animate-slide-up" style={{ animationDelay: "0.2s" }}>
             <Link to="/donations">
-              <Button variant="hero" size="xl" className="gap-3">
-                <Heart className="w-5 h-5" />
+              <Button variant="hero" size="xl" className="gap-3 pr-4">
                 Donate Now
-                <ArrowRight className="w-5 h-5" />
+                <span className="w-7 h-7 bg-white rounded-full flex items-center justify-center">
+                  <ArrowUpRight className="w-4 h-4 text-primary" />
+                </span>
               </Button>
             </Link>
             <Button variant="outline-light" size="xl" className="gap-3">
