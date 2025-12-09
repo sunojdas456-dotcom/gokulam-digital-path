@@ -20,6 +20,7 @@ export default {
       fontFamily: {
         sans: ["DM Sans", "system-ui", "sans-serif"],
         display: ["Playfair Display", "Georgia", "serif"],
+        accent: ["Cormorant Garamond", "Georgia", "serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -65,23 +66,27 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        // Spiritual color palette
+        // Enhanced Spiritual color palette
         teal: {
+          deep: "hsl(var(--teal-deep))",
           dark: "hsl(var(--teal-dark))",
+          mid: "hsl(var(--teal-mid))",
           light: "hsl(var(--teal-light))",
         },
         coral: {
           DEFAULT: "hsl(var(--coral))",
+          dark: "hsl(var(--coral-dark))",
           light: "hsl(var(--coral-light))",
         },
-        gold: {
-          DEFAULT: "hsl(var(--gold))",
-          light: "hsl(var(--gold-light))",
+        saffron: {
+          DEFAULT: "hsl(var(--saffron))",
+          light: "hsl(var(--saffron-light))",
         },
-        cream: {
-          DEFAULT: "hsl(var(--cream))",
-          dark: "hsl(var(--cream-dark))",
+        ivory: {
+          DEFAULT: "hsl(var(--ivory))",
+          dark: "hsl(var(--ivory-dark))",
         },
+        sage: "hsl(var(--sage))",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -90,13 +95,19 @@ export default {
         "2xl": "1rem",
         "3xl": "1.5rem",
         "4xl": "2rem",
+        "5xl": "2.5rem",
       },
       boxShadow: {
         "spiritual": "0 10px 40px -10px hsl(var(--primary) / 0.2)",
         "coral": "0 10px 40px -10px hsl(var(--coral) / 0.3)",
-        "gold": "0 10px 40px -10px hsl(var(--gold) / 0.3)",
-        "soft": "0 4px 20px -2px rgba(0, 0, 0, 0.08)",
+        "saffron": "0 10px 40px -10px hsl(var(--saffron) / 0.3)",
+        "soft": "0 4px 24px -4px rgba(0, 0, 0, 0.08)",
         "elevated": "0 20px 50px -15px rgba(0, 0, 0, 0.15)",
+        "inner-glow": "inset 0 2px 20px 0 rgba(255, 255, 255, 0.1)",
+        "dramatic": "0 30px 60px -20px rgba(0, 0, 0, 0.2)",
+      },
+      transitionDuration: {
+        "400": "400ms",
       },
       keyframes: {
         "accordion-down": {
@@ -123,6 +134,10 @@ export default {
           from: { opacity: "0", transform: "scale(0.95)" },
           to: { opacity: "1", transform: "scale(1)" },
         },
+        "spin-slow": {
+          from: { transform: "rotate(0deg)" },
+          to: { transform: "rotate(360deg)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -131,10 +146,16 @@ export default {
         "slide-up": "slide-up 0.5s ease-out",
         "slide-down": "slide-down 0.5s ease-out",
         "scale-in": "scale-in 0.3s ease-out",
+        "spin-slow": "spin-slow 20s linear infinite",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-spiritual": "linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--teal-dark)) 100%)",
+        "gradient-spiritual": "linear-gradient(165deg, hsl(var(--primary)) 0%, hsl(var(--teal-deep)) 100%)",
+        "gradient-divine": "linear-gradient(135deg, hsl(var(--saffron)) 0%, hsl(var(--coral)) 100%)",
+      },
+      spacing: {
+        "18": "4.5rem",
+        "22": "5.5rem",
       },
     },
   },
