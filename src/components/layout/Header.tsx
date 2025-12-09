@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ChevronDown, User, Heart } from "lucide-react";
+import { Menu, X, ChevronDown, User, MapPin, Phone, Mail, Facebook, Instagram, Linkedin, Youtube, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -9,6 +9,13 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
+
+// Custom X (Twitter) icon since lucide doesn't have the new X logo
+const XIcon = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" className={className} fill="currentColor">
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+  </svg>
+);
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -51,16 +58,60 @@ export function Header() {
     setIsMobileMenuOpen(false);
   }, [location.pathname]);
 
+  const socialLinks = [
+    { icon: Facebook, href: "https://facebook.com", label: "Facebook" },
+    { icon: XIcon, href: "https://x.com", label: "X" },
+    { icon: Instagram, href: "https://instagram.com", label: "Instagram" },
+    { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
+    { icon: Youtube, href: "https://youtube.com", label: "YouTube" },
+  ];
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 px-4 md:px-8 lg:px-12 pt-4">
-      <div
-        className={cn(
-          "max-w-7xl mx-auto rounded-full transition-all duration-500",
-          isScrolled
-            ? "bg-card/95 backdrop-blur-md shadow-lg"
-            : "bg-card/80 backdrop-blur-sm shadow-soft"
-        )}
-      >
+    <header className="fixed top-0 left-0 right-0 z-50">
+      {/* Top Contact Bar */}
+      <div className="hidden lg:block bg-primary text-primary-foreground">
+        <div className="max-w-7xl mx-auto px-6 py-2 flex items-center justify-between text-sm">
+          <div className="flex items-center gap-6">
+            <div className="flex items-center gap-2">
+              <MapPin className="w-4 h-4" />
+              <span>123 Temple Road, Bangalore, India</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Phone className="w-4 h-4" />
+              <a href="tel:+919876543210" className="hover:underline">+91 98765 43210</a>
+            </div>
+            <div className="flex items-center gap-2">
+              <Mail className="w-4 h-4" />
+              <a href="mailto:info@gokulam.org" className="hover:underline">info@gokulam.org</a>
+            </div>
+          </div>
+          <div className="flex items-center gap-3">
+            {socialLinks.map((social) => (
+              <a
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:opacity-80 transition-opacity"
+                aria-label={social.label}
+              >
+                <social.icon className="w-4 h-4" />
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Main Navigation Container */}
+      <div className="px-4 md:px-8 lg:px-12 pt-3">
+        <div
+          className={cn(
+            "max-w-7xl mx-auto rounded-full transition-all duration-500",
+            isScrolled
+              ? "bg-card/95 backdrop-blur-md shadow-lg"
+              : "bg-card/90 backdrop-blur-sm shadow-soft"
+          )}
+        >
 
         {/* Main navigation */}
         <nav className="flex items-center justify-between px-4 md:px-6 py-3">
@@ -137,9 +188,12 @@ export function Header() {
               </Button>
             </Link>
             <Link to="/donations">
-              <Button variant="coral" size="default" className="gap-2">
-                <Heart className="w-4 h-4" />
+              <Button variant="coral" size="default" className="gap-2 pr-3">
                 <span className="hidden sm:inline">Donate Now</span>
+                <span className="sm:hidden">Donate</span>
+                <span className="w-6 h-6 bg-white rounded-full flex items-center justify-center">
+                  <ArrowUpRight className="w-4 h-4 text-coral" />
+                </span>
               </Button>
             </Link>
 
@@ -157,8 +211,8 @@ export function Header() {
             </button>
           </div>
         </nav>
+        </div>
       </div>
-
       {/* Mobile Menu */}
       <div
         className={cn(
