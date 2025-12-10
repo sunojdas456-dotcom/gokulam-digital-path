@@ -30,6 +30,7 @@ const serviceLinks = [
 const socialLinks = [
   { icon: Facebook, href: "https://facebook.com/gokulam", label: "Facebook", color: "hover:bg-[#1877F2]" },
   { icon: XIcon, href: "https://x.com/gokulam", label: "X", color: "hover:bg-foreground" },
+  { icon: Instagram, href: "https://instagram.com/gokulam", label: "Instagram", color: "hover:bg-[#E4405F]" },
   { icon: Youtube, href: "https://youtube.com/gokulam", label: "YouTube", color: "hover:bg-[#FF0000]" },
   { icon: Linkedin, href: "https://linkedin.com/gokulam", label: "LinkedIn", color: "hover:bg-[#0A66C2]" },
 ];
@@ -80,52 +81,44 @@ export function Footer() {
 
       {/* Top Contact Bar */}
       <div className="relative border-b border-primary-foreground/10">
-        <div className="container py-8">
-          <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 lg:gap-20">
+        <div className="container py-6 md:py-8">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8 lg:gap-16 max-w-5xl mx-auto">
             {/* Phone */}
-            <a href="tel:+919123456789" className="group flex items-center gap-4 hover:translate-y-[-2px] transition-transform">
-              <div className="relative">
-                <div className="w-14 h-14 rounded-full border-2 border-coral/50 flex items-center justify-center group-hover:border-coral transition-colors">
-                  <Phone className="w-6 h-6 text-coral" />
+            <a href="tel:+919123456789" className="group flex items-center gap-3 md:gap-4 justify-center sm:justify-start hover:translate-y-[-2px] transition-transform">
+              <div className="relative shrink-0">
+                <div className="w-12 h-12 md:w-14 md:h-14 rounded-full border-2 border-coral/50 flex items-center justify-center group-hover:border-coral transition-colors">
+                  <Phone className="w-5 h-5 md:w-6 md:h-6 text-coral" />
                 </div>
-                <div className="absolute -inset-1 rounded-full border border-coral/20 animate-ping opacity-0 group-hover:opacity-100" />
               </div>
-              <div>
-                <span className="block text-xs text-primary-foreground/60 uppercase tracking-wider mb-0.5">Call Emergency</span>
-                <span className="font-semibold text-lg group-hover:text-coral transition-colors">+91 91234 56789</span>
+              <div className="text-left">
+                <span className="block text-[10px] md:text-xs text-primary-foreground/60 uppercase tracking-wider mb-0.5">Call</span>
+                <span className="font-semibold text-sm md:text-lg group-hover:text-coral transition-colors">+91 91234 56789</span>
               </div>
             </a>
-
-            {/* Divider */}
-            <div className="hidden md:block w-px h-12 bg-gradient-to-b from-transparent via-primary-foreground/20 to-transparent" />
 
             {/* Email */}
-            <a href="mailto:info@gokulam.com" className="group flex items-center gap-4 hover:translate-y-[-2px] transition-transform">
-              <div className="relative">
-                <div className="w-14 h-14 rounded-full border-2 border-coral/50 flex items-center justify-center group-hover:border-coral transition-colors">
-                  <Mail className="w-6 h-6 text-coral" />
+            <a href="mailto:info@gokulam.com" className="group flex items-center gap-3 md:gap-4 justify-center hover:translate-y-[-2px] transition-transform">
+              <div className="relative shrink-0">
+                <div className="w-12 h-12 md:w-14 md:h-14 rounded-full border-2 border-coral/50 flex items-center justify-center group-hover:border-coral transition-colors">
+                  <Mail className="w-5 h-5 md:w-6 md:h-6 text-coral" />
                 </div>
-                <div className="absolute -inset-1 rounded-full border border-coral/20 animate-ping opacity-0 group-hover:opacity-100" />
               </div>
-              <div>
-                <span className="block text-xs text-primary-foreground/60 uppercase tracking-wider mb-0.5">Send Email</span>
-                <span className="font-semibold text-lg group-hover:text-coral transition-colors">info@gokulam.com</span>
+              <div className="text-left">
+                <span className="block text-[10px] md:text-xs text-primary-foreground/60 uppercase tracking-wider mb-0.5">Send Email</span>
+                <span className="font-semibold text-sm md:text-lg group-hover:text-coral transition-colors">info@gokulam.com</span>
               </div>
             </a>
 
-            {/* Divider */}
-            <div className="hidden md:block w-px h-12 bg-gradient-to-b from-transparent via-primary-foreground/20 to-transparent" />
-
             {/* Address */}
-            <div className="group flex items-center gap-4">
-              <div className="relative">
-                <div className="w-14 h-14 rounded-full border-2 border-coral/50 flex items-center justify-center group-hover:border-coral transition-colors">
-                  <MapPin className="w-6 h-6 text-coral" />
+            <div className="group flex items-center gap-3 md:gap-4 justify-center sm:justify-end">
+              <div className="relative shrink-0">
+                <div className="w-12 h-12 md:w-14 md:h-14 rounded-full border-2 border-coral/50 flex items-center justify-center">
+                  <MapPin className="w-5 h-5 md:w-6 md:h-6 text-coral" />
                 </div>
               </div>
-              <div>
-                <span className="block text-xs text-primary-foreground/60 uppercase tracking-wider mb-0.5">Address</span>
-                <span className="font-semibold text-lg">Bypass Rd. Nizamabad Telangana 503001, India</span>
+              <div className="text-left">
+                <span className="block text-[10px] md:text-xs text-primary-foreground/60 uppercase tracking-wider mb-0.5">Address</span>
+                <span className="font-semibold text-xs md:text-sm lg:text-base leading-tight">Bypass Rd. Nizamabad,<br className="hidden sm:block" /> Telangana 503001, India</span>
               </div>
             </div>
           </div>
@@ -133,12 +126,12 @@ export function Footer() {
       </div>
 
       {/* Main Footer */}
-      <div className="container py-12 lg:py-16 relative">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8">
+      <div className="container py-10 lg:py-16 relative">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-8">
           {/* Logo & About - Takes 4 columns */}
-          <div className="lg:col-span-4 relative">
+          <div className="sm:col-span-2 lg:col-span-4 relative text-center sm:text-left">
             {/* Decorative Brush Stroke */}
-            <div className="absolute -left-8 -top-4 w-48 h-32 opacity-80 pointer-events-none">
+            <div className="absolute left-1/2 sm:left-0 -translate-x-1/2 sm:translate-x-0 sm:-left-8 -top-4 w-48 h-32 opacity-80 pointer-events-none">
               <svg viewBox="0 0 200 100" className="w-full h-full">
                 <path
                   d="M10,50 Q30,20 60,40 T110,35 T160,50 T190,40"
@@ -160,10 +153,10 @@ export function Footer() {
             </div>
 
             {/* Logo Box */}
-            <div className="relative z-10 bg-ivory rounded-xl p-6 inline-block mb-6 shadow-lg">
+            <div className="relative z-10 bg-ivory rounded-xl p-5 inline-block mb-5 shadow-lg mx-auto sm:mx-0">
               <div className="flex flex-col items-center text-primary">
                 {/* Decorative Mandala Icon */}
-                <svg viewBox="0 0 60 60" className="w-12 h-12 mb-2">
+                <svg viewBox="0 0 60 60" className="w-10 h-10 mb-1.5">
                   <circle cx="30" cy="30" r="28" fill="none" stroke="currentColor" strokeWidth="1" opacity="0.3" />
                   <circle cx="30" cy="30" r="20" fill="none" stroke="currentColor" strokeWidth="1" opacity="0.5" />
                   <circle cx="30" cy="30" r="12" fill="none" stroke="currentColor" strokeWidth="1.5" />
@@ -181,23 +174,23 @@ export function Footer() {
                     />
                   ))}
                 </svg>
-                <span className="font-display text-xl font-bold tracking-wide">gokulam</span>
+                <span className="font-display text-lg font-bold tracking-wide">gokulam</span>
               </div>
             </div>
 
-            <p className="text-primary-foreground/80 text-sm leading-relaxed mb-6 max-w-xs">
+            <p className="text-primary-foreground/80 text-sm leading-relaxed mb-5 max-w-xs mx-auto sm:mx-0">
               Our secure online donation platform allows you to make contributions quickly and safely. Donations to Gokulam Dharmik Charitable Trust are eligible for 80G benefits under the Income Tax Act, 1961.
             </p>
 
             {/* Social Links */}
-            <div className="flex gap-2">
+            <div className="flex gap-2 justify-center sm:justify-start">
               {socialLinks.map((social) => (
                 <a
                   key={social.label}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`w-10 h-10 rounded-full bg-coral flex items-center justify-center text-white transition-all duration-300 hover:scale-110 ${social.color}`}
+                  className={`w-9 h-9 md:w-10 md:h-10 rounded-full bg-coral flex items-center justify-center text-white transition-all duration-300 hover:scale-110 ${social.color}`}
                   aria-label={social.label}
                 >
                   <social.icon className="w-4 h-4" />
@@ -207,17 +200,17 @@ export function Footer() {
           </div>
 
           {/* Quick Links - Takes 2 columns */}
-          <div className="lg:col-span-2">
-            <h4 className="font-display text-lg font-semibold mb-6 relative inline-block">
+          <div className="lg:col-span-2 text-center sm:text-left">
+            <h4 className="font-display text-lg font-semibold mb-4 md:mb-6 relative inline-block">
               Quick Links
               <span className="absolute -bottom-1 left-0 w-8 h-0.5 bg-coral rounded-full" />
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-2 md:space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.label}>
                   <Link
                     to={link.href}
-                    className="group flex items-center gap-2 text-primary-foreground/70 hover:text-coral transition-colors text-sm"
+                    className="group inline-flex items-center gap-2 text-primary-foreground/70 hover:text-coral transition-colors text-sm"
                   >
                     <ChevronRight className="w-4 h-4 text-coral opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
                     <span>{link.label}</span>
@@ -228,17 +221,17 @@ export function Footer() {
           </div>
 
           {/* Our Services - Takes 2 columns */}
-          <div className="lg:col-span-2">
-            <h4 className="font-display text-lg font-semibold mb-6 relative inline-block">
+          <div className="lg:col-span-2 text-center sm:text-left">
+            <h4 className="font-display text-lg font-semibold mb-4 md:mb-6 relative inline-block">
               Our Services
               <span className="absolute -bottom-1 left-0 w-8 h-0.5 bg-coral rounded-full" />
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-2 md:space-y-3">
               {serviceLinks.map((link) => (
                 <li key={link.label}>
                   <Link
                     to={link.href}
-                    className="group flex items-center gap-2 text-primary-foreground/70 hover:text-coral transition-colors text-sm"
+                    className="group inline-flex items-center gap-2 text-primary-foreground/70 hover:text-coral transition-colors text-sm"
                   >
                     <ChevronRight className="w-4 h-4 text-coral opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
                     <span>{link.label}</span>
@@ -249,39 +242,39 @@ export function Footer() {
           </div>
 
           {/* Newsletter - Takes 4 columns */}
-          <div className="lg:col-span-4">
-            <h4 className="font-display text-lg font-semibold mb-6 relative inline-block">
+          <div className="sm:col-span-2 lg:col-span-4 text-center sm:text-left">
+            <h4 className="font-display text-lg font-semibold mb-4 md:mb-6 relative inline-block">
               Newsletter
               <span className="absolute -bottom-1 left-0 w-8 h-0.5 bg-coral rounded-full" />
             </h4>
             <p className="text-primary-foreground/70 text-sm mb-4">
               Subscribe to Our Newsletter: Regular inspiration and feedback mechanisms.
             </p>
-            <form onSubmit={handleSubscribe} className="space-y-4">
+            <form onSubmit={handleSubscribe} className="space-y-3 max-w-sm mx-auto sm:mx-0">
               <div className="relative">
                 <Input
                   type="email"
                   placeholder="Enter your email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="bg-primary-foreground/5 border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/40 pr-14 h-12 rounded-lg focus:border-coral"
+                  className="bg-primary-foreground/5 border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/40 pr-14 h-11 md:h-12 rounded-lg focus:border-coral"
                 />
                 <Button 
                   type="submit" 
                   size="icon"
-                  className="absolute right-1.5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-lg bg-coral hover:bg-coral-dark"
+                  className="absolute right-1.5 top-1/2 -translate-y-1/2 w-8 h-8 md:w-9 md:h-9 rounded-lg bg-coral hover:bg-coral-dark"
                 >
                   <Send className="w-4 h-4" />
                 </Button>
               </div>
-              <div className="flex items-start gap-2">
+              <div className="flex items-start gap-2 justify-center sm:justify-start">
                 <Checkbox
                   id="privacy"
                   checked={agreedToPolicy}
                   onCheckedChange={(checked) => setAgreedToPolicy(checked as boolean)}
                   className="mt-0.5 border-primary-foreground/30 data-[state=checked]:bg-coral data-[state=checked]:border-coral"
                 />
-                <label htmlFor="privacy" className="text-xs text-primary-foreground/60 leading-relaxed cursor-pointer">
+                <label htmlFor="privacy" className="text-xs text-primary-foreground/60 leading-relaxed cursor-pointer text-left">
                   I agree to the{" "}
                   <Link to="/privacy-policy" className="text-coral hover:underline">
                     Privacy Policy
