@@ -68,44 +68,59 @@ export function Header() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
-      {/* Top Contact Bar */}
+      {/* Top Contact Bar with Curved Bottom */}
       <div className={cn(
-        "hidden lg:block transition-all duration-500",
+        "hidden lg:block transition-all duration-500 relative",
         isScrolled 
           ? "h-0 opacity-0 overflow-hidden" 
-          : "h-auto opacity-100 bg-primary text-primary-foreground"
+          : "h-auto opacity-100"
       )}>
-        <div className="max-w-7xl mx-auto px-8 py-2.5 flex items-center justify-between text-sm">
-          <div className="flex items-center gap-8">
-            <div className="flex items-center gap-2 hover:text-saffron transition-colors cursor-pointer">
-              <MapPin className="w-4 h-4" />
-              <span className="font-medium">123 Temple Road, Bangalore</span>
-            </div>
-            <div className="w-px h-4 bg-primary-foreground/30" />
-            <a href="tel:+919876543210" className="flex items-center gap-2 hover:text-saffron transition-colors">
-              <Phone className="w-4 h-4" />
-              <span>+91 98765 43210</span>
-            </a>
-            <div className="w-px h-4 bg-primary-foreground/30" />
-            <a href="mailto:info@gokulam.org" className="flex items-center gap-2 hover:text-saffron transition-colors">
-              <Mail className="w-4 h-4" />
-              <span>info@gokulam.org</span>
-            </a>
-          </div>
-          <div className="flex items-center gap-1">
-            {socialLinks.map((social) => (
-              <a
-                key={social.label}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 rounded-full hover:bg-primary-foreground/10 hover:text-saffron transition-all duration-300"
-                aria-label={social.label}
-              >
-                <social.icon className="w-4 h-4" />
+        <div className="bg-primary text-primary-foreground">
+          <div className="max-w-[1920px] mx-auto px-6 lg:px-10 py-2 flex items-center justify-between text-sm">
+            <div className="flex items-center gap-6">
+              <a href="mailto:info@gokulam.com" className="flex items-center gap-2 hover:text-saffron transition-colors group">
+                <div className="w-5 h-5 rounded-full bg-coral flex items-center justify-center">
+                  <Mail className="w-3 h-3 text-white" />
+                </div>
+                <span className="text-xs font-medium group-hover:underline">info@gokulam.com</span>
               </a>
-            ))}
+              <a href="#" className="flex items-center gap-2 hover:text-saffron transition-colors group">
+                <div className="w-5 h-5 rounded-full bg-coral flex items-center justify-center">
+                  <MapPin className="w-3 h-3 text-white" />
+                </div>
+                <span className="text-xs font-medium group-hover:underline">Bypass Rd, Kanteshwar, Nizamabad, Telangana 503002, India</span>
+              </a>
+            </div>
+            <div className="flex items-center gap-4">
+              <span className="text-xs font-medium text-primary-foreground/80">Follow Us</span>
+              <div className="w-px h-4 bg-primary-foreground/30" />
+              <div className="flex items-center gap-0.5">
+                {socialLinks.map((social) => (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-7 h-7 rounded flex items-center justify-center bg-primary-foreground/10 hover:bg-coral hover:text-white transition-all duration-300"
+                    aria-label={social.label}
+                  >
+                    <social.icon className="w-3.5 h-3.5" />
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
+        </div>
+        {/* Curved Bottom Edge */}
+        <div className="absolute bottom-0 left-0 right-0 h-3 overflow-hidden translate-y-full">
+          <svg 
+            className="absolute top-0 left-0 w-full h-full" 
+            viewBox="0 0 1920 12" 
+            preserveAspectRatio="none"
+            fill="hsl(var(--primary))"
+          >
+            <path d="M0,0 L1920,0 L1920,0 Q960,12 0,0 Z" />
+          </svg>
         </div>
       </div>
 
