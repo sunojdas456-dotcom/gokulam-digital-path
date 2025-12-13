@@ -252,7 +252,7 @@ export function Header() {
                 >
                   <span className="font-semibold">Donate Now</span>
                   <span className="w-7 h-7 bg-white rounded-full flex items-center justify-center shadow-inner">
-                    <HandHeart className="w-4 h-4 text-coral" />
+                    <ArrowUpRight className="w-4 h-4 text-coral" />
                   </span>
                 </Button>
               </Link>
@@ -425,8 +425,8 @@ export function Header() {
                   variant="coral" 
                   className="w-full rounded-xl gap-2 h-12 shadow-coral font-sans"
                 >
-                  <HandHeart className="w-4 h-4" />
                   <span className="font-semibold">Donate</span>
+                  <ArrowUpRight className="w-4 h-4" />
                 </Button>
               </Link>
             </div>
