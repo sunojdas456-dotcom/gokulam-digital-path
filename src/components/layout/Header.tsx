@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ChevronDown, ChevronRight, User, MapPin, Mail, Facebook, Instagram, Linkedin, Youtube, ArrowUpRight, Heart, Calendar, Home, Info, Sparkles, HandHeart, Gift } from "lucide-react";
+import { Menu, X, ChevronDown, ChevronRight, User, MapPin, Mail, Facebook, Instagram, Linkedin, Youtube, ArrowUpRight, Heart, Calendar, Home, Info, Sparkles, HandHeart, Gift, Globe, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -82,60 +82,75 @@ export function Header() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
-      {/* Top Contact Bar with Curved Bottom */}
+      {/* Top Contact Bar - Sleek Dark Design */}
       <div className={cn(
-        "hidden lg:block transition-all duration-500 relative",
+        "hidden lg:block transition-all duration-500 relative overflow-hidden",
         isScrolled 
-          ? "h-0 opacity-0 overflow-hidden" 
+          ? "h-0 opacity-0" 
           : "h-auto opacity-100"
       )}>
-        <div className="bg-primary text-primary-foreground">
-          <div className="max-w-[1920px] mx-auto px-6 lg:px-10 py-2 flex items-center justify-between text-sm">
-            <div className="flex items-center gap-6">
-              <a href="mailto:info@gokulam.com" className="flex items-center gap-2 hover:text-saffron transition-colors group">
-                <div className="w-5 h-5 rounded-full bg-coral flex items-center justify-center">
-                  <Mail className="w-3 h-3 text-white" />
+        {/* Main dark bar */}
+        <div className="bg-gradient-to-r from-[hsl(165,55%,8%)] via-[hsl(165,50%,12%)] to-[hsl(165,55%,8%)] text-white border-b border-white/5">
+          <div className="max-w-7xl mx-auto px-6 lg:px-10">
+            <div className="flex items-center justify-between h-10">
+              {/* Left: Email & Address */}
+              <div className="flex items-center divide-x divide-white/10">
+                <a 
+                  href="mailto:info@gokulam.com" 
+                  className="flex items-center gap-2 pr-5 hover:text-saffron transition-colors group"
+                >
+                  <Mail className="w-3.5 h-3.5 text-coral" />
+                  <span className="text-xs font-medium tracking-wide">info@gokulam.com</span>
+                </a>
+                <a 
+                  href="#" 
+                  className="flex items-center gap-2 pl-5 hover:text-saffron transition-colors group"
+                >
+                  <MapPin className="w-3.5 h-3.5 text-coral" />
+                  <span className="text-xs font-medium tracking-wide">Bypass Rd, Kanteshwar, Nizamabad, Telangana 503002, India</span>
+                </a>
+              </div>
+              
+              {/* Right: Language & Social */}
+              <div className="flex items-center gap-5">
+                {/* Language Selector */}
+                <button className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 hover:bg-white/10 transition-colors border border-white/10">
+                  <Globe className="w-3 h-3 text-saffron" />
+                  <span className="text-xs font-semibold">En</span>
+                  <ChevronDown className="w-3 h-3 opacity-60" />
+                </button>
+                
+                {/* Divider */}
+                <div className="w-px h-5 bg-white/15" />
+                
+                {/* Follow Us & Social */}
+                <div className="flex items-center gap-3">
+                  <span className="text-xs font-medium text-white/70 tracking-wide">Follow Us</span>
+                  <div className="flex items-center">
+                    {socialLinks.map((social, index) => (
+                      <a
+                        key={social.label}
+                        href={social.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={cn(
+                          "w-7 h-7 flex items-center justify-center transition-all duration-300 hover:text-saffron hover:scale-110",
+                          index !== socialLinks.length - 1 && "border-r border-white/10"
+                        )}
+                        aria-label={social.label}
+                      >
+                        <social.icon className="w-3.5 h-3.5" />
+                      </a>
+                    ))}
+                  </div>
                 </div>
-                <span className="text-xs font-medium group-hover:underline">info@gokulam.com</span>
-              </a>
-              <a href="#" className="flex items-center gap-2 hover:text-saffron transition-colors group">
-                <div className="w-5 h-5 rounded-full bg-coral flex items-center justify-center">
-                  <MapPin className="w-3 h-3 text-white" />
-                </div>
-                <span className="text-xs font-medium group-hover:underline">Bypass Rd, Kanteshwar, Nizamabad, Telangana 503002, India</span>
-              </a>
-            </div>
-            <div className="flex items-center gap-4">
-              <span className="text-xs font-medium text-primary-foreground/80">Follow Us</span>
-              <div className="w-px h-4 bg-primary-foreground/30" />
-              <div className="flex items-center gap-0.5">
-                {socialLinks.map((social) => (
-                  <a
-                    key={social.label}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-7 h-7 rounded flex items-center justify-center bg-primary-foreground/10 hover:bg-coral hover:text-white transition-all duration-300"
-                    aria-label={social.label}
-                  >
-                    <social.icon className="w-3.5 h-3.5" />
-                  </a>
-                ))}
               </div>
             </div>
           </div>
         </div>
-        {/* Curved Bottom Edge */}
-        <div className="absolute bottom-0 left-0 right-0 h-3 overflow-hidden translate-y-full">
-          <svg 
-            className="absolute top-0 left-0 w-full h-full" 
-            viewBox="0 0 1920 12" 
-            preserveAspectRatio="none"
-            fill="hsl(var(--primary))"
-          >
-            <path d="M0,0 L1920,0 L1920,0 Q960,12 0,0 Z" />
-          </svg>
-        </div>
+        
+        {/* Decorative bottom accent line */}
+        <div className="h-0.5 bg-gradient-to-r from-transparent via-coral/60 to-transparent" />
       </div>
 
       {/* Main Navigation Container */}
