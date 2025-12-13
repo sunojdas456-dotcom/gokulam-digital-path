@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ChevronDown, ChevronRight, User, MapPin, Phone, Mail, Facebook, Instagram, Linkedin, Youtube, ArrowUpRight, Heart, Calendar, Home, Info, Sparkles } from "lucide-react";
+import { Menu, X, ChevronDown, ChevronRight, User, MapPin, Mail, Facebook, Instagram, Linkedin, Youtube, ArrowUpRight, Heart, Calendar, Home, Info, Sparkles, HandHeart, Gift } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -55,7 +55,7 @@ const navIcons: Record<string, React.ReactNode> = {
   "About": <Info className="w-4 h-4" />,
   "Activities": <Sparkles className="w-4 h-4" />,
   "Pilgrimage Tour": <Calendar className="w-4 h-4" />,
-  "Donations": <Heart className="w-4 h-4" />,
+  "Donations": <HandHeart className="w-4 h-4" />,
 };
 
 export function Header() {
@@ -179,7 +179,7 @@ export function Header() {
                       <DropdownMenuTrigger asChild>
                         <button
                           className={cn(
-                            "flex items-center gap-1 px-4 py-2 text-sm font-medium rounded-full transition-all duration-300",
+                            "flex items-center gap-1 px-4 py-2 text-sm font-sans font-semibold rounded-full transition-all duration-300",
                             location.pathname.startsWith(item.href) && item.href !== "/"
                               ? "bg-primary text-primary-foreground shadow-md"
                               : "text-foreground hover:bg-card hover:shadow-sm"
@@ -215,7 +215,7 @@ export function Header() {
                       key={item.label}
                       to={item.href}
                       className={cn(
-                        "px-4 py-2 text-sm font-medium rounded-full transition-all duration-300",
+                        "px-4 py-2 text-sm font-sans font-semibold rounded-full transition-all duration-300",
                         location.pathname === item.href
                           ? "bg-primary text-primary-foreground shadow-md"
                           : "text-foreground hover:bg-card hover:shadow-sm"
@@ -248,11 +248,11 @@ export function Header() {
                 <Button 
                   variant="coral" 
                   size="default" 
-                  className="gap-2 pr-2.5 rounded-full shadow-coral hover:shadow-lg transition-shadow"
+                  className="gap-2 pr-2.5 rounded-full shadow-coral hover:shadow-lg transition-shadow font-sans"
                 >
                   <span className="font-semibold">Donate Now</span>
                   <span className="w-7 h-7 bg-white rounded-full flex items-center justify-center shadow-inner">
-                    <ArrowUpRight className="w-4 h-4 text-coral" />
+                    <HandHeart className="w-4 h-4 text-coral" />
                   </span>
                 </Button>
               </Link>
@@ -423,10 +423,10 @@ export function Header() {
               <Link to="/donations" className="block">
                 <Button 
                   variant="coral" 
-                  className="w-full rounded-xl gap-2 h-12 shadow-coral"
+                  className="w-full rounded-xl gap-2 h-12 shadow-coral font-sans"
                 >
-                  <Heart className="w-4 h-4" />
-                  <span className="font-medium">Donate</span>
+                  <HandHeart className="w-4 h-4" />
+                  <span className="font-semibold">Donate</span>
                 </Button>
               </Link>
             </div>
