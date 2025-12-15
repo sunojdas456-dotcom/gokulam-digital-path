@@ -82,75 +82,92 @@ export function Header() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
-      {/* Top Contact Bar - Sleek Dark Design */}
+      {/* Top Contact Bar - Curved Ship Shape Design */}
       <div className={cn(
-        "hidden lg:block transition-all duration-500 relative overflow-hidden",
+        "hidden lg:block transition-all duration-500 relative overflow-hidden px-4 md:px-6 lg:px-10",
         isScrolled 
-          ? "h-0 opacity-0" 
-          : "h-auto opacity-100"
+          ? "h-0 opacity-0 pt-0" 
+          : "h-auto opacity-100 pt-2"
       )}>
-        {/* Main dark bar */}
-        <div className="bg-gradient-to-r from-[hsl(165,55%,8%)] via-[hsl(165,50%,12%)] to-[hsl(165,55%,8%)] text-white border-b border-white/5">
-          <div className="max-w-7xl mx-auto px-6 lg:px-10">
-            <div className="flex items-center justify-between h-10">
-              {/* Left: Email & Address */}
-              <div className="flex items-center divide-x divide-white/10">
-                <a 
-                  href="mailto:info@gokulam.com" 
-                  className="flex items-center gap-2 pr-5 hover:text-saffron transition-colors group"
-                >
-                  <Mail className="w-3.5 h-3.5 text-coral" />
-                  <span className="text-xs font-medium tracking-wide">info@gokulam.com</span>
-                </a>
-                <a 
-                  href="#" 
-                  className="flex items-center gap-2 pl-5 hover:text-saffron transition-colors group"
-                >
-                  <MapPin className="w-3.5 h-3.5 text-coral" />
-                  <span className="text-xs font-medium tracking-wide">Bypass Rd, Kanteshwar, Nizamabad, Telangana 503002, India</span>
-                </a>
-              </div>
-              
-              {/* Right: Language & Social */}
-              <div className="flex items-center gap-5">
-                {/* Language Selector */}
-                <button className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 hover:bg-white/10 transition-colors border border-white/10">
-                  <Globe className="w-3 h-3 text-saffron" />
-                  <span className="text-xs font-semibold">En</span>
-                  <ChevronDown className="w-3 h-3 opacity-60" />
-                </button>
+        {/* Main curved dark bar - ship shape */}
+        <div className="max-w-7xl mx-auto">
+          <div className="bg-gradient-to-r from-[hsl(165,55%,10%)] via-[hsl(165,50%,14%)] to-[hsl(165,55%,10%)] text-white rounded-t-2xl rounded-b-[2rem] shadow-lg border border-white/5">
+            <div className="px-6 lg:px-8">
+              <div className="flex items-center justify-between h-11">
+                {/* Left: Email & Address */}
+                <div className="flex items-center divide-x divide-white/15">
+                  <a 
+                    href="mailto:info@gokulam.com" 
+                    className="flex items-center gap-2 pr-5 hover:text-saffron transition-colors group"
+                  >
+                    <Mail className="w-3.5 h-3.5 text-coral" />
+                    <span className="text-xs font-medium tracking-wide">info@gokulam.com</span>
+                  </a>
+                  <a 
+                    href="#" 
+                    className="flex items-center gap-2 pl-5 hover:text-saffron transition-colors group"
+                  >
+                    <MapPin className="w-3.5 h-3.5 text-coral" />
+                    <span className="text-xs font-medium tracking-wide">Bypass Rd, Kanteshwar, Nizamabad, Telangana 503002, India</span>
+                  </a>
+                </div>
                 
-                {/* Divider */}
-                <div className="w-px h-5 bg-white/15" />
-                
-                {/* Follow Us & Social */}
-                <div className="flex items-center gap-3">
-                  <span className="text-xs font-medium text-white/70 tracking-wide">Follow Us</span>
-                  <div className="flex items-center">
-                    {socialLinks.map((social, index) => (
-                      <a
-                        key={social.label}
-                        href={social.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={cn(
-                          "w-7 h-7 flex items-center justify-center transition-all duration-300 hover:text-saffron hover:scale-110",
-                          index !== socialLinks.length - 1 && "border-r border-white/10"
-                        )}
-                        aria-label={social.label}
-                      >
-                        <social.icon className="w-3.5 h-3.5" />
-                      </a>
-                    ))}
+                {/* Right: Language Dropdown & Social */}
+                <div className="flex items-center gap-5">
+                  {/* Language Dropdown */}
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <button className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/10 transition-colors border border-white/10">
+                        <Globe className="w-3.5 h-3.5 text-saffron" />
+                        <span className="text-xs font-semibold">En</span>
+                        <ChevronDown className="w-3 h-3 opacity-60" />
+                      </button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent 
+                      align="end" 
+                      className="w-36 rounded-xl border-border/50 shadow-elevated bg-card/98 backdrop-blur-xl"
+                    >
+                      <DropdownMenuItem className="cursor-pointer rounded-lg px-3 py-2.5 hover:bg-muted focus:bg-muted">
+                        <span className="text-sm font-medium">English</span>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem className="cursor-pointer rounded-lg px-3 py-2.5 hover:bg-muted focus:bg-muted">
+                        <span className="text-sm font-medium">తెలుగు (Telugu)</span>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem className="cursor-pointer rounded-lg px-3 py-2.5 hover:bg-muted focus:bg-muted">
+                        <span className="text-sm font-medium">हिन्दी (Hindi)</span>
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                  
+                  {/* Divider */}
+                  <div className="w-px h-5 bg-white/15" />
+                  
+                  {/* Follow Us & Social */}
+                  <div className="flex items-center gap-3">
+                    <span className="text-xs font-medium text-white/70 tracking-wide">Follow Us</span>
+                    <div className="flex items-center">
+                      {socialLinks.map((social, index) => (
+                        <a
+                          key={social.label}
+                          href={social.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={cn(
+                            "w-7 h-7 flex items-center justify-center transition-all duration-300 hover:text-saffron hover:scale-110",
+                            index !== socialLinks.length - 1 && "border-r border-white/10"
+                          )}
+                          aria-label={social.label}
+                        >
+                          <social.icon className="w-3.5 h-3.5" />
+                        </a>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        
-        {/* Decorative bottom accent line */}
-        <div className="h-0.5 bg-gradient-to-r from-transparent via-coral/60 to-transparent" />
       </div>
 
       {/* Main Navigation Container */}
