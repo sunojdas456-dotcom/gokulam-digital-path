@@ -1,10 +1,12 @@
 import { useState, useEffect, useRef } from "react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { cn } from "@/lib/utils";
 
 const stats = [
-  { value: 10000, suffix: "+", label: "Happy Donors", color: "text-secondary" },
-  { value: 500, suffix: "+", label: "Cows Protected", color: "text-primary-foreground" },
-  { value: 1000000, suffix: "+", label: "Meals Served", color: "text-accent" },
-  { value: 200, suffix: "+", label: "Pilgrimages Sponsored", color: "text-secondary" },
+  { value: 10000, suffix: "+", label: "Happy Donors", icon: "❤️" },
+  { value: 500, suffix: "+", label: "Cows Protected", icon: "🐄" },
+  { value: 1000000, suffix: "+", label: "Meals Served", icon: "🍽️" },
+  { value: 200, suffix: "+", label: "Pilgrimages Sponsored", icon: "🛕" },
 ];
 
 function AnimatedCounter({ value, suffix }: { value: number; suffix: string }) {
@@ -17,8 +19,8 @@ function AnimatedCounter({ value, suffix }: { value: number; suffix: string }) {
       ([entry]) => {
         if (entry.isIntersecting && !hasAnimated) {
           setHasAnimated(true);
-          const duration = 2000;
-          const steps = 60;
+          const duration = 2500;
+          const steps = 80;
           const increment = value / steps;
           let current = 0;
 
@@ -35,7 +37,7 @@ function AnimatedCounter({ value, suffix }: { value: number; suffix: string }) {
           return () => clearInterval(timer);
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.3 }
     );
 
     if (ref.current) {
@@ -55,34 +57,64 @@ function AnimatedCounter({ value, suffix }: { value: number; suffix: string }) {
   };
 
   return (
-    <div ref={ref} className="font-display text-4xl md:text-5xl font-bold">
+    <div ref={ref} className="font-display text-4xl md:text-5xl lg:text-6xl font-bold">
       {formatNumber(count)}{suffix}
     </div>
   );
 }
 
 export function StatsSection() {
+  const [ref, isVisible] = useScrollAnimation<HTMLElement>({ threshold: 0.2 });
+
   return (
-    <section className="py-16 gradient-coral text-secondary-foreground">
-      <div className="container">
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 text-sm font-semibold mb-4 opacity-90">
-            <span className="w-8 h-px bg-secondary-foreground/50" />
+    <section 
+      ref={ref}
+      className="py-20 md:py-28 relative overflow-hidden"
+      style={{
+        background: 'linear-gradient(135deg, hsl(18 75% 60%) 0%, hsl(18 70% 50%) 50%, hsl(40 85% 55%) 100%)'
+      }}
+    >
+      {/* Decorative elements */}
+      <div className="absolute top-0 left-0 w-96 h-96 bg-white/5 rounded-full blur-[100px]" />
+      <div className="absolute bottom-0 right-0 w-80 h-80 bg-white/5 rounded-full blur-[100px]" />
+      
+      {/* Sacred geometry pattern */}
+      <div className="absolute inset-0 opacity-[0.03]">
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full border border-white" />
+        <div className="absolute bottom-1/4 right-1/4 w-48 h-48 rounded-full border border-white" />
+      </div>
+
+      <div className="container relative z-10">
+        <div className={cn(
+          "text-center mb-16 transition-all duration-1000",
+          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+        )}>
+          <div className="inline-flex items-center gap-3 text-sm font-medium mb-5 text-white/80">
+            <span className="w-10 h-px bg-white/40" />
             Help Strengthen
-            <span className="w-8 h-px bg-secondary-foreground/50" />
+            <span className="w-10 h-px bg-white/40" />
           </div>
-          <h2 className="font-display text-3xl md:text-4xl font-bold">
+          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
             We can achieve Gokulam dreams
             <br />
-            when we work together.
+            <span className="text-white/90">when we work together.</span>
           </h2>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-          {stats.map((stat) => (
-            <div key={stat.label} className="p-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+          {stats.map((stat, index) => (
+            <div 
+              key={stat.label} 
+              className={cn(
+                "relative p-8 md:p-10 rounded-3xl bg-white/10 backdrop-blur-sm border border-white/10 text-center text-white transition-all duration-700",
+                "hover:bg-white/15 hover:border-white/20 hover:scale-105",
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              )}
+              style={{ transitionDelay: `${index * 150 + 200}ms` }}
+            >
+              <div className="text-3xl mb-4">{stat.icon}</div>
               <AnimatedCounter value={stat.value} suffix={stat.suffix} />
-              <p className="text-sm mt-2 opacity-80">{stat.label}</p>
+              <p className="text-sm mt-3 opacity-80 font-medium">{stat.label}</p>
             </div>
           ))}
         </div>
